@@ -1,34 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<androidx.constraintlayout.widget.ConstraintLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:fitsSystemWindows="true"
   tools:context=".ui.MainActivity">
 
-  <com.google.android.material.appbar.AppBarLayout
+  <FrameLayout
+    android:id="@+id/flFragment"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:fitsSystemWindows="true">
+    android:layout_height="0dp"
+    app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
 
-    <com.google.android.material.appbar.MaterialToolbar
-      android:id="@+id/toolbar"
+    <androidx.fragment.app.FragmentContainerView
+      android:id="@+id/newsNavHostFragment"
+      android:name="androidx.navigation.fragment.NavHostFragment"
       android:layout_width="match_parent"
-      android:layout_height="?attr/actionBarSize" />
+      android:layout_height="match_parent"
+      app:defaultNavHost="true"
+      app:navGraph="@navigation/nav_graph" />
 
-  </com.google.android.material.appbar.AppBarLayout>
+  </FrameLayout>
 
-  <include layout="@layout/content_main" />
+  <com.google.android.material.bottomnavigation.BottomNavigationView
+    android:id="@+id/bottomNavigationView"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    app:menu="@menu/bottom_navigation_menu"
+    app:itemTextColor="@color/white"
+    app:itemIconTint="@color/white"
+    android:background="@color/purple"
+    app:itemActiveIndicatorStyle="@style/App.Custom.Indicator"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"/>
 
-  <com.google.android.material.floatingactionbutton.FloatingActionButton
-    android:id="@+id/fab"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="bottom|end"
-    android:layout_marginEnd="@dimen/fab_margin"
-    android:layout_marginBottom="16dp"
-    app:srcCompat="@android:drawable/ic_dialog_email" />
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
