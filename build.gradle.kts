@@ -6,6 +6,9 @@ buildscript{
   }
   dependencies{
     classpath(libs.androidx.navigation.safe.args.gradle.plugin)
+    classpath(libs.retrofit2)
+    classpath(libs.converter.gson)
+    classpath(libs.logging.interceptor)
   }
 }
 plugins {
